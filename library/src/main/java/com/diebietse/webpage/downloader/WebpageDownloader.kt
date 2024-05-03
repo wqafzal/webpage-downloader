@@ -45,6 +45,9 @@ class WebpageDownloader {
          * @param content an [InputStream] containing the file's content
          */
         fun save(filename: String, content: InputStream)
+
+        //Does directory exists
+        fun fileExists(filename: String): Boolean
     }
 
     private data class ParsedHtml(
@@ -113,6 +116,8 @@ class WebpageDownloader {
     }
 
     private fun downloadFile(fileToDownload: HtmlUtil.DownloadInfo, fileSaver: FileSaver) {
+        if (fileToDownload.filename.contains(Regex("jpg|png|gif|JPEG|PNG|GIF|JPG")) && fileSaver.fileExists(fileToDownload.filename))
+            return
         val request = Request.Builder().url(fileToDownload.url).headers(HEADERS).build()
         val response = CLIENT.newCall(request).execute()
         fileSaver.save(fileToDownload.filename, response.body!!.byteStream())

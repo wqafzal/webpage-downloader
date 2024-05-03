@@ -19,6 +19,10 @@ class WebpageDownloaderTest {
             override fun save(filename: String, content: InputStream) {
                 content.close()
             }
+
+            override fun fileExists(filename: String): Boolean {
+                return true
+            }
         }
     }
 

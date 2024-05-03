@@ -6,6 +6,7 @@ plugins {
 
 android {
     compileSdk = 30
+    namespace = "com.diebietse.webpage.downloader"
 
     defaultConfig {
         minSdk = 21

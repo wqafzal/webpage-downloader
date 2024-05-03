@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdk = 30
     buildToolsVersion = "30.0.3"
-
+    namespace = "com.diebietse.webpage.downloader.example"
     defaultConfig {
         applicationId = "com.diebietse.webpage.downloader.example"
         minSdk = 21

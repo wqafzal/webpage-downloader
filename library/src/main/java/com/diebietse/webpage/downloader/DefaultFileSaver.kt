@@ -20,4 +20,8 @@ class DefaultFileSaver(private val outputDir: File) : WebpageDownloader.FileSave
     override fun save(filename: String, content: InputStream) {
         File(outputDir, filename).outputStream().use { content.copyTo(it) }
     }
+
+    override fun fileExists(filename: String): Boolean {
+        return File(outputDir, filename).exists()
+    }
 }
